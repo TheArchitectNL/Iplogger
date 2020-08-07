@@ -18,4 +18,8 @@ app.get('/', function (req, res) {
   console.log(`${Date()} - ${your_ip}`)
 })
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+var server = app.listen(process.env.PORT || 5000, function() {
+  var host = server.address().address
+  var port = server.address().port
+  console.log("Example app listening at http://%s:%s", host, port)
+})
